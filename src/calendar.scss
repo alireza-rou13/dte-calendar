@@ -64,6 +64,7 @@ body {
         text-align: center;
         color: #000;
         margin: 0;
+        font-weight: bold;
     }
     padding: 8px;
     .toolbar-today , .toolbar-arrow-left , .toolbar-arrow-right{
@@ -82,7 +83,7 @@ body {
         }
     }
     .left-toolbar{
-        max-width: 85px;
+        //max-width: 85px;
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
@@ -94,13 +95,22 @@ body {
             padding: 0;
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
-            max-width: 30px;
+            //max-width: 30px;
         }
     }
     .toolbar-arrow-right{
         padding: 0;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
-        max-width: 30px;
+        //max-width: 30px;
     }
+}
+
+.modal-title{
+    font-weight: bold;
+}
+.alert-footer{
+    position: absolute;
+    right: 10px;
+    padding: 10px;
 }
