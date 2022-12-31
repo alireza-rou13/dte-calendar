@@ -34,8 +34,13 @@ export default function Calendar({ ...props }) {
 
 
     const fetchData = async () => {
-        let res = await axios.get("http://share.morsalat.ir/programs");
-        fetch_events(res.data);
+        await axios.get("http://share.morsalat.ir/programs").then((res)=>{
+            let data=res.data
+            //remove
+            let old = JSON.stringify(data).replace(/&quot;/g, '\'');
+            let newArray = JSON.parse(old); //convert back to array
+            fetch_events(newArray);
+        })
     }
     
 
@@ -201,14 +206,14 @@ export default function Calendar({ ...props }) {
                         dayCellDidMount={() => dayCellDidMount(hlpMonthStartDayDate, hlpMonthEndDayDate)}
                         headerToolbar={false}
                         eventClick= {(info)=> {
-                            console.log(info.event.extendedProps)
+                            //console.log(info.event.extendedProps)
                             handle_event(info.event)
                             handleShow(true)
                         }}
                         eventDidMount={(info) => {
                             // console.log(info.event);
-                            console.log(range)
-                            const msg= info.event.extendedProps.approved === "1" ? "✅ (تایید شده)" : "⚠️(در دست بررسی)"
+                            // console.log(range)
+                            const msg= info.event.extendedProps.approved === "1" ? "✅ (تایید شده)" : "🔴⚠️(در دست بررسی)"
                             tippy(info.el, {
                               placement: 'left',
                               animation: 'fade',
