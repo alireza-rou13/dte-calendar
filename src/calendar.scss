@@ -119,3 +119,9 @@ body {
     right: 10px;
     padding: 10px;
 }
+.fc-day-other > div> div> .fc-daygrid-event-harness {
+    display: none;
+}
+.fc .fc-day-other .fc-daygrid-day-top {
+    opacity: 0;
+}
