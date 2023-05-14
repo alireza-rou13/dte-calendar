@@ -34,7 +34,7 @@ export default function Calendar({ ...props }) {
 
 
     const fetchData = async () => {
-        await axios.get("http://share.morsalat.ir/programs").then((res)=>{
+        await axios.get("http://share.morsalat.ir/programs2").then((res)=>{
             let data=res.data
             //remove
             let old = JSON.stringify(data).replace(/&quot;/g, '\'');
