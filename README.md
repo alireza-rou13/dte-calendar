@@ -1,10 +1,8 @@
-# Getting Started with Create React App
+# FullCalendar React with Jalali Calendar 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
+## Jalali calendar
+Jalali Calendar, also known as the Persian Calendar, is a solar calendar system used in Iran and Afghanistan. It is based on the observation of the Sun's movement and is similar to the Gregorian calendar in terms of the length of the year (365 days), but with different month and day names.
 
 ### `npm start`
 
