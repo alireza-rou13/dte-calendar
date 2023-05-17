@@ -135,7 +135,7 @@ export default function Calendar({ ...props }) {
         const _end=moment(info.end).locale('fa').format('hh:mm');
         var ap_text= check_approved(info.extendedProps.approved)//==="1" ? "تایید شده است." : "تایید نشده است." ;
         var ap_icon=info.extendedProps.approved!=="1" ? `  <i class="bi bi-exclamation-triangle-fill"></i>  ` : `  <i class="bi bi-check-square-fill"></i>  ` ;
-        var ap_class=info.extendedProps.approved ? "alert-success" : "alert-danger" ;
+        var ap_class=info.extendedProps.approved ? "alert-success success" : "alert-danger" ;
         const _approve=`<div class="alert ${ap_class}" role="alert">${ap_icon}زمان و مکان این رویداد توسط ناظر  ${ap_text} </div>`
         const _alert=`<div class="alert alert-success" role="alert">  این برنامه ${_start} در ${info.extendedProps.field_place}  به صورت ${info.extendedProps.field_type_metting} آغاز و در ساعت   ${_end} به پایان می رسد.</div>`
         setbody(_alert+_approve+info.extendedProps.description);
