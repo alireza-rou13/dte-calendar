@@ -133,14 +133,21 @@ export default function Calendar({ ...props }) {
         setauthor(info.extendedProps.field_full_name)
         const _start=moment(info.start).locale('fa').format('D MMMM ساعت hh:mm');
         const _end=moment(info.end).locale('fa').format('hh:mm');
-        var ap_text= info.extendedProps.approved==="1" ? "تایید شده است." : "تایید نشده است." ;
-        var ap_icon=info.extendedProps.approved==="0" ? `  <i class="bi bi-exclamation-triangle-fill"></i>  ` : `  <i class="bi bi-check-square-fill"></i>  ` ;
+        var ap_text= check_approved(info.extendedProps.approved)//==="1" ? "تایید شده است." : "تایید نشده است." ;
+        var ap_icon=info.extendedProps.approved!=="1" ? `  <i class="bi bi-exclamation-triangle-fill"></i>  ` : `  <i class="bi bi-check-square-fill"></i>  ` ;
         var ap_class=info.extendedProps.approved ? "alert-success" : "alert-danger" ;
         const _approve=`<div class="alert ${ap_class}" role="alert">${ap_icon}زمان و مکان این رویداد توسط ناظر  ${ap_text} </div>`
         const _alert=`<div class="alert alert-success" role="alert">  این برنامه ${_start} در ${info.extendedProps.field_place}  به صورت ${info.extendedProps.field_type_metting} آغاز و در ساعت   ${_end} به پایان می رسد.</div>`
         setbody(_alert+_approve+info.extendedProps.description);
     }
-
+    const check_approved=(code) => {
+        switch (code){
+            case "0": return "در دست بررسی است"; break;
+            case "1": return "تایید شده است"; break;
+            case "2": return "رد شده است"; break;
+            case "3": return "لغو شده توسط کاربر"; break;
+        }
+    }
     return (
         <>
             {isLoadComplete &&
@@ -213,7 +220,7 @@ export default function Calendar({ ...props }) {
                         eventDidMount={(info) => {
                             // console.log(info.event);
                             // console.log(range)
-                            const msg= info.event.extendedProps.approved === "1" ? "✅ (تایید شده)" : "🔴⚠️(در دست بررسی)"
+                            const msg= check_approved(info.event.extendedProps.approved) // === "1" ? "✅ (تایید شده)" : "🔴⚠️(در دست بررسی)"
                             tippy(info.el, {
                               placement: 'left',
                               animation: 'fade',
